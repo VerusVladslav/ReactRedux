@@ -34,7 +34,7 @@ namespace LibIT.Web.Services
             var roles = _userManager.GetRolesAsync(user).Result;
             roles = roles.OrderBy(x => x).ToList();
             var query = _context.Users.AsQueryable();
-            //var image = user.Image;
+            var image =$"files/{user.Image}";
 
             //if (image == null)
             //{
@@ -46,7 +46,7 @@ namespace LibIT.Web.Services
             {
                 new Claim("id",user.Id.ToString()),
                 new Claim("name",user.UserName),
-                //new Claim("image",image)
+                new Claim("image",image)
             };
             foreach (var role in roles)
             {

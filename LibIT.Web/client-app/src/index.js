@@ -20,8 +20,11 @@ if(localStorage.authToken) {
   let data = {
     token:localStorage.authToken
   };
-  loginActions.loginByJWT(data,store.dispatch);
-}
+ 
+
+    loginActions.loginByJWT(data,store.dispatch);
+  }
+
 // <React.StrictMode>
 // </React.StrictMode>
 ReactDOM.render(

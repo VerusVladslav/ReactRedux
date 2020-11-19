@@ -1,10 +1,12 @@
 import * as types from './types';
 import isEmpty from 'lodash/isEmpty';
+import { NULL } from 'node-sass';
 const intialState = {
     user: {
         id: '',
         name: '',
-        roles: []
+        roles: [],
+        image: ''
     },
     loading: false,
     errors: {},
@@ -42,6 +44,7 @@ export const loginReducer = (state = intialState, action) => {
                     user:action.user,
                     isAuthenticated: !isEmpty(action.user)
                 }
+               
         default:
             break;
     }

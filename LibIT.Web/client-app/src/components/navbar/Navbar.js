@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { connect } from 'react-redux';
-
+ import {logOutByJWT} from '../auth/login/actions.js';
 
 class Navbar extends Component {
     LogOut () {
-       // e.preventDefault();
-      // console.log(this.state);
-        // console.log("LogOUT");   
-      // localStorage.removeItem('token');       
+      
+           
+         //    logOutByJWT(localStorage.getItem('authToken'));
+        
+            
     }
     render() {
        
@@ -42,7 +43,14 @@ class Navbar extends Component {
                        <li className="nav-link"  ></li>
                             
 
-
+                       {this.props.isAuthenticated &&
+                       
+                        <li className="nav-link" ><img src={this.props.user.image}  height='40px'></img></li>
+                      }
+                    {this.props.isAuthenticated &&
+                       
+                    <li className="nav-link" >{this.props.user.name}</li>
+                     }  
                       {this.props.isAuthenticated &&
                         <li className="nav-link"  onClick={() => this.LogOut()}>Вийти</li>
                       }
@@ -75,7 +83,8 @@ class Navbar extends Component {
 
 const mapState = (stateRedux) => {
     return {
-        isAuthenticated: stateRedux.login.isAuthenticated
+        isAuthenticated: stateRedux.login.isAuthenticated,
+        user:stateRedux.login.user
     }
 }
 

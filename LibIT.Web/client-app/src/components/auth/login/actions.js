@@ -49,5 +49,16 @@ export const loginByJWT = (tokens,dispatch) => {
         type:types.LOGIN_SET_CURRENT_USER,
         user
     });
+    // console.log(tokens);
     console.log("--User login -- ", user);
+}
+
+export const logOutByJWT = (token) => {
+    // const {token} = tokens; //property from object = tokens.token
+    
+     setAuthorizationToken(token);
+    localStorage.removeItem('authToken');
+   // const dispatch =({ type: types.LOGIN_SET_CURRENT_USER });
+    
+   // console.log("--User login -- ", user);
 }
